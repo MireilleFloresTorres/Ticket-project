@@ -58,6 +58,8 @@ private:
 };
 
 void Ticket::mostrarInfo() const {
+
+	std::cout << "Ticket Information:" << std::endl;
 	std::cout << "ID: " << m_id << std::endl;
 	std::cout << "Titulo: " << m_titulo << std::endl;
 	std::cout << "Descripcion: " << m_descripcion << std::endl;
