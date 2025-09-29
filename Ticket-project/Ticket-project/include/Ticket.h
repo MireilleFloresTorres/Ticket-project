@@ -18,9 +18,8 @@ public://Inicializo el constructor de la clase Ticket y sus atributos
 	Estado getEstado() const { return m_estado; }
 	int getId() const { return m_id; }
 	std::string getFecha() const { return m_fecha; }
-
 	void setId(int id) { m_id = id; }//el id se asigna automaticamente al crear el ticket y no se puede modificar
-
+	void setEstado(Estado nuevoEstado) { m_estado = nuevoEstado; }
 	/**
 	* nota: el switch no se usa con eltipo std::string
 	* Hacemos un switch para covertir el enum en string y poder mostrarlo por pantalla

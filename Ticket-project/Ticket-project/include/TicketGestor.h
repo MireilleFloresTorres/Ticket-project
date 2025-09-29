@@ -16,7 +16,7 @@ class TicketGestor {
 
 private:
 	std::vector<Ticket> tickets; // vector para almacenar los tickets
-	int nextId = 1; // id autoincremental para los tickets
+	int nextId = 1367; // id autoincremental para los tickets
 
 };
 
@@ -31,7 +31,7 @@ void TicketGestor::agregarTicket(const Ticket& ticket) {
     // Incrementar el ID para el próximo ticket
     nextId++;
 
-    std::cout << "Ticket creado exitosamente con ID: " << nuevoTicket.getId() << std::endl;
+    std::cout << "Ticket creado con ID: " << nuevoTicket.getId() << std::endl;
 }
 
 bool TicketGestor::eliminarTicket(int ticketId) {//buscamos para eliminar con el id
@@ -39,7 +39,7 @@ bool TicketGestor::eliminarTicket(int ticketId) {//buscamos para eliminar con el
         if (tickets[i].getId() == ticketId) {
             // Eliminar el ticket del vector
             tickets.erase(tickets.begin() + i);
-            std::cout << "Ticket con ID " << ticketId << " eliminado exitosamente." << std::endl;
+            std::cout << "Ticket con ID " << ticketId << " ha sido eliminado " << std::endl;
             return true; // Ticket encontrado y eliminado
         }
     }
