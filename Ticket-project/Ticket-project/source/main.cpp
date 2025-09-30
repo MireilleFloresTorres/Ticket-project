@@ -10,21 +10,23 @@ int main()
 
     TicketGestor gestor;
 
-	int opcion = 0;// Variable para almacenar la opcion del menu
+    int opcion = 0;
 
 
     std::cout << "Gestion de Tickets" << std::endl;
 
 
 
-    while (opcion != 5) {
+    while (opcion != 7) {
         // Mostrar menu
-        std::cout << "--- BIENVNIDO ---" << std::endl;
+        std::cout << "--- BIENVENIDO ---" << std::endl;
         std::cout << "1. Crear nuevo ticket" << std::endl;
         std::cout << "2. Ver todos los tickets" << std::endl;
         std::cout << "3. Buscar ticket por ID" << std::endl;
         std::cout << "4. Cambiar estado de un ticket" << std::endl;
-        std::cout << "5. Salir" << std::endl;
+        std::cout << "5. Eliminar un ticket" << std::endl;
+        std::cout << "6. Eliminar todos los tickets" << std::endl; 
+        std::cout << "7. Salir" << std::endl;
         std::cout << "Seleccione una opcion: ";
         std::cin >> opcion;
 
@@ -146,10 +148,35 @@ int main()
         }
 
         case 5: {
+            int id;
             std::cout << "------------------------" << std::endl;
-            std::cout << "Saliendo..." << std::endl;
+            std::cout << "Ingrese el ID del ticket a eliminar: ";
+            std::cin >> id;
+
+            gestor.eliminarTicket(id);
             break;
         }
+
+        case 6: { // Eliminar todos los tickets
+            char confirmar;
+            std::cout << "------------------------" << std::endl;
+            std::cout << "¿Esta seguro de eliminar todos los tickets? (s/n): ";
+            std::cin >> confirmar;
+
+			if (confirmar == 's' || confirmar == 'S') {//sin importar mayuscula o minuscula
+				gestor.eliminarTodosLosTickets();// llamo al metodo para eliminar todos los tickets
+                std::cout << "Todos los tickets han sido eliminados." << std::endl;
+            }
+            else {
+                std::cout << "Operacion cancelada." << std::endl;
+            }
+            break;
+        }
+
+        case 7: {
+        std::cout << "Saliendo del programa..." << std::endl;
+        break;
+		}
 
         default: {
             std::cout << "------------------------" << std::endl;

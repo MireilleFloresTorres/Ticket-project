@@ -9,7 +9,7 @@ class TicketGestor {
 	~TicketGestor() = default;
 	void agregarTicket(const Ticket& ticket);
 	bool eliminarTicket(int ticketId);
-
+    void eliminarTodosLosTickets();
 
 	Ticket* getTicket(int ticketId);// obtener un ticket por su id
 	std::vector<Ticket> getAllTickets() const;// listar todos los tickets
@@ -59,4 +59,10 @@ Ticket* TicketGestor::getTicket(int ticketId) {//obtener un ticket por su id
 
 std::vector<Ticket> TicketGestor::getAllTickets() const {
     return tickets; // Devolver una copia del vector completo
+}
+
+void TicketGestor::eliminarTodosLosTickets() {
+    tickets.clear(); // Vacía el vector completamente
+    nextId = 1; // Reinicia el contador de los id
+    std::cout << "Todos los tickets han sdo eliminados" << std::endl;
 }
