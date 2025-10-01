@@ -1,6 +1,13 @@
 #include"Prerequisites.h"
 #include"TicketGestor.h"
-
+/**
+ * @brief Función principal del programa.
+ *
+ * Gestiona un sistema de tickets mediante un menú interactivo.
+ * El usuario puede crear, visualizar, buscar, actualizar y eliminar tickets.
+ *
+ * @return int Código de salida del programa (0 si finaliza correctamente).
+ */
 int main()
 
 {
@@ -8,7 +15,7 @@ int main()
 	fecha.getFecha();//llamada al metodo getFecha para obtener la fecha actual
 	// menú para interactur con el usuario
 
-    TicketGestor gestor;
+    TicketGestor gestor;// Objeto encargado de gestionar los tickets
 
     int opcion = 0;
 
@@ -18,7 +25,9 @@ int main()
 
 
     while (opcion != 7) {
-        // Mostrar menu
+        /**
+         * @brief Menú principal mostrado al usuario.
+         */
         std::cout << "--- BIENVENIDO ---" << std::endl;
         std::cout << "1. Crear nuevo ticket" << std::endl;
         std::cout << "2. Ver todos los tickets" << std::endl;
@@ -30,11 +39,10 @@ int main()
         std::cout << "Seleccione una opcion: ";
         std::cin >> opcion;
 
-        // Limpiar el buffer de entrada
-        std::cin.ignore();
+        std::cin.ignore();// Limpiar el buffer de entrada
 
         switch (opcion) {
-        case 1: { // Crear nuevo ticket
+        case 1: { // @brief Crear nuevo ticket
             std::string titulo, descripcion;
 
             std::cout << "Ingrese el titulo del ticket:";
@@ -43,9 +51,13 @@ int main()
             std::cout << "Ingrese la descripcion del ticket: ";
             std::getline(std::cin, descripcion);
 
-            // Crear el ticket y agregarlo al gestor
-			Ticket nuevoTicket(titulo, descripcion);// crear un nuevo ticket
-            //aquí automaticamente se inicia en estado ABIERTO y con la fecha actual
+            /**
+             * @details
+             * - Se crea un ticket con título y descripción dados.
+             * - El estado inicial es ABIERTO.
+             * - La fecha se asigna automáticamente a la actual.
+             */
+			Ticket nuevoTicket(titulo, descripcion);
             gestor.agregarTicket(nuevoTicket);// lo aggrego al gestor de tickets
 
             std::cout << "Ticket creado..." << std::endl;
@@ -53,7 +65,7 @@ int main()
             break;
         }
 
-        case 2: { // Ver todos los tickets
+        case 2: { // @brief Mostrar todos los tickets
             std::cout << "LISTA DE TICKETS" << std::endl;
             std::vector<Ticket> todosLosTickets = gestor.getAllTickets();
 			// aquí obtengo una copia de todos los tickets que tengo en el gestor
@@ -82,7 +94,7 @@ int main()
             break;
         }
 
-        case 3: {
+        case 3: {// @brief Buscar ticket por ID
             int id;
 
             std::cout << "------------------------" << std::endl;
@@ -105,7 +117,7 @@ int main()
             break;
         }
 
-        case 4: {
+        case 4: {// @brief Cambiar estado de un ticket
             int id, nuevoEstado;
             std::cout << "------------------------" << std::endl;
             std::cout << "Ingrese el ID del ticket: ";
@@ -147,7 +159,7 @@ int main()
             break;
         }
 
-        case 5: {
+        case 5: { //@brief Eliminar ticket por ID
             int id;
             std::cout << "------------------------" << std::endl;
             std::cout << "Ingrese el ID del ticket a eliminar: ";
@@ -157,7 +169,7 @@ int main()
             break;
         }
 
-        case 6: { // Eliminar todos los tickets
+        case 6: { // @brief Eliminar todos los tickets
             char confirmar;
             std::cout << "------------------------" << std::endl;
             std::cout << "¿Esta seguro de eliminar todos los tickets? (s/n): ";
@@ -173,7 +185,7 @@ int main()
             break;
         }
 
-        case 7: {
+        case 7: {// @brief Salir del programa
         std::cout << "Saliendo del programa..." << std::endl;
         break;
 		}
